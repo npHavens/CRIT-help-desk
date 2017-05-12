@@ -1,0 +1,675 @@
+
+
+/* Reset CSS - scope limited to .wForm - based on YUI reset
+ * --------------------------------------------------------
+ */
+.wForm dl, .wForm dt, .wForm dd, .wForm ul, .wForm ol, .wForm li, .wForm div, .wForm th,
+.wForm h1, .wForm h2, .wForm h3, .wForm h4, .wForm h5, .wForm h6, .wForm pre, .wForm td,
+.wForm form, .wForm fieldset, .wForm input, .wForm textarea, .wForm p, .wForm blockquote {
+	margin:0; padding:0; }
+.wForm table { border-collapse:collapse; border-spacing:0; }
+.wForm fieldset, .wForm img { border:0; }
+.wForm address, .wForm caption, .wForm cite, .wForm code, .wForm dfn,.wForm em, .wForm strong, .wForm th, .wForm var {
+	font-style:normal; font-weight:normal; }
+.wForm ol, .wForm ul { list-style:none; }
+.wForm caption, .wForm th { text-align:left; }
+.wForm h1, .wForm h2, .wForm h3:not(.wFormTitle), .wForm h4, .wForm h5, .wForm h6 { font-size:100%; font-weight:normal; }
+.wForm q:before, .wForm q:after { content:''; }
+.wForm abbr, .wForm acronym { border:0; }
+
+
+/* Base based on YUI's CSS Foundation - scope limited to .wForm
+ * -------------------------------------------------------------
+ */
+.wForm  h1 {
+	/*18px via YUI Fonts CSS foundation*/
+	font-size:138.5%;
+}
+.wForm  h2 {
+	/*16px via YUI Fonts CSS foundation*/
+	font-size:123.1%;
+}
+.wForm  h3:not(.wFormTitle) {
+	/*14px via YUI Fonts CSS foundation*/
+	font-size:108%;
+}
+.wForm h1, .wForm h2, .wForm h3 {
+	/* top & bottom margin based on font size */
+	margin:1em 0;
+}
+.wForm h1, .wForm h2, .wForm h3, .wForm h4, .wForm h5, .wForm h6, .wForm strong {
+	/*bringing boldness back to headers and the strong element*/
+	font-weight:bold;
+}
+.wForm abbr, .wForm acronym {
+	/*indicating to users that more info is available */
+	border-bottom:1px dotted #000; cursor:help;
+}
+.wForm em {
+	/*bringing italics back to the em element*/
+	font-style:italic;
+}
+.wForm blockquote, .wForm ul, .wForm ol, .wForm dl {
+	/*giving blockquotes and lists room to breath*/
+	margin:1em;
+}
+.wForm ol, .wForm ul, .wForm dl {
+	/*bringing lists on to the page with breathing room */
+	margin-left:2em;
+}
+ .wForm ol li {
+	/*giving OL's LIs generated numbers*/
+	list-style: decimal outside;
+}
+ .wForm ul li {
+	/*giving UL's LIs generated disc markers*/
+	list-style: disc outside;
+}
+ .wForm dl dd {
+	/*giving UL's LIs generated numbers*/
+	margin-left:1em;
+}
+.wForm th, .wForm td {
+	border: none; padding: 0;
+}
+.wForm th {
+	/*distinguishing table headers from data cells*/
+	font-weight:bold; text-align:center;
+}
+.wForm caption {
+	/*coordinated marking to match cell's padding*/
+	margin-bottom:.5em;
+	/*centered so it doesn't blend in to other content*/
+	text-align:center;
+}
+.wForm p, .wForm fieldset, .wForm table {
+
+}
+
+
+/* Now for the actual layout formatting.
+ * -------------------------------------
+ */
+
+.wForm 					{ padding: 10px 15px; } /* default padding between form border and content */
+
+@media only screen and (max-width: 500px) {
+    .wForm { padding: 5px;  }
+}
+
+.wFormContainer 		{ max-width: 770px;     /* default, overriden using an inline style */
+                          margin: auto;
+                          overflow: auto; }     /* make sure we show a scroll bar if form height is defined in theme and is too small. */
+
+/* Set an invisible border around the various form elements so we can
+   highlight them  without changing any dimensions.
+   For instance to highlight a field that failed the input validation.
+ */
+.wFormContainer .wFormTitle { border: 2px solid transparent; padding: 2px 6px; }
+.wForm .pageSection > h4 { border: 2px solid transparent; padding: 2px 6px; }
+.wForm .oneField		{ border: 2px solid transparent; padding: 2px 6px; box-sizing: border-box; }
+.wForm .oneFieldWrapper	{ display: inline-block; max-width: 100%; }
+.wForm .section			{  }
+
+/* Set a visible border on fieldset and a decent default padding.
+   http://stackoverflow.com/questions/1716183/html-fieldset-allows-children-to-expand-indefinitely */
+.wForm fieldset 		{ min-width: 0; border-width: 2px; border-style: solid;  padding: 0 8px 15px 8px; margin-left: 6px; margin-right: 6px;}
+.wForm fieldset legend  { padding: 0 8px; }
+
+@-moz-document url-prefix() { /* Only target Gecko. (Breaks layout in IE.) */
+    .wForm fieldset { display: table-cell; }
+}
+
+/* Same for grid/matrix table */
+.wForm .matrixLayout,
+.wForm .gridLayout		{ border: 2px solid transparent; margin-left: 6px; margin-right: 6px; }
+
+/* Vertical spacing */
+.wForm div > div.oneField,
+.wForm fieldset > div.oneField,
+.wForm form > div.oneField,
+.wForm fieldset,
+.wForm .matrixLayout,
+.wForm .gridLayout,
+.wForm h4,
+.wForm .wfPagingButtons,
+.wForm .actions				{ margin-top: 15px;}
+
+.wForm table.columnLayout	{ margin-bottom: 0; /* override default table margin */ }
+
+/* ACL related CSS */
+.wForm .wf-acl-hidden { display: none; }
+
+/* LABELS------------------------------------------------------------------ */
+
+.label { display: -moz-inline-box; /* For Firefox 2.x */ display: inline-block; }	/* for Form Builder preview only. Firefox has difficulties making inline elements
+							   (label, span) contentEditable. So we use a <div class='label'> instead, and have it behave like a label. */
+
+.wForm .preField	{ max-width: 100%; display: -moz-inline-box; /* For Firefox 2.x */ display: inline-block;  }
+
+/* Label positionning, using the labelsAbove|labelsBelow|labelsLeftAligned|labelsRightAligned classes */
+.wForm .labelsLeftAligned  .preField	{ text-align: left; }
+.wForm .labelsRightAligned .preField	{ text-align: right; }
+.wForm .labelsAbove .preField			{ padding-bottom: 4px; } /* add 4px to match spacing of inline section's label with below field (which has a 2px border+2px padding) */
+.wForm .labelsBelow .preField			{ padding-bottom: 4px; } /* add 4px to match spacing of inline section's label with below field (which has a 2px border+2px padding) */
+.wForm .labelsHidden >  .label,
+.wForm .labelsHidden > .oneFieldWrapper > .label { visibility: hidden;}  /* div.oneFieldWrapper is only present in the form-builder for now */
+.wForm .labelsRemoved  > .label,
+.wForm .labelsRemoved  > .oneFieldWrapper  > .label	{ display: none; }  /* div.oneFieldWrapper is only present in the form-builder for now */
+/* Make sure our labels align correctly with the input when left/right aligned (input may occupy several vertical lines) */
+.wForm label, .wForm .label  			{ vertical-align: top;  }
+.wForm label *, .wForm .label * 		{ vertical-align: top;  } /* bold, italic and underline content */
+
+.wForm form label img { pointer-events:none; } /* IE11 issue, see http://stackoverflow.com/questions/20524815/ie-11-bug-image-inside-label-inside-form */
+
+/* Label size. */
+.wForm .preField 						{ width: 200px; padding-right: 5px; /* allow 4px of extra right padding, so other section label can still align correctly when accounting for oneField extra padding+border */ }
+.wForm fieldset .preField 				{ width: 190px; /* account for 10px of border+padding, maintains alignment with inputs outside of fieldset */ }
+.wForm fieldset fieldset .preField		{ width: 180px; /* account for 2x10px of border+padding */ }
+
+/* Label size when inside an inline section */
+.wForm .inline .oneField .preField		{ min-width: 0; }
+
+/* Label spacing for radio & checkboxes */
+.wForm form .choices	{ /* empty */ }
+.wForm .postField  		{ margin: 0 12px 0 4px; }
+
+/* Wrapper around a radio or checkbox and its label.
+   Display each choice on same line by default. */
+.wForm form .oneChoice	{ display: inline-block; }
+
+/* Override choice alignment if oneChoicePerLine option is set (as a class on a parent element)  */
+.wForm form .vertical > .oneChoice { display: block; margin: 0 0 4px 0; }
+.wForm form .vertical > .choiceGroup > .oneChoice { display: block; margin: 0 0 4px 0; }
+
+/* Make sure radio/checkbox and its label stay together when a line wrap occurs. */
+.wForm form .oneChoice	{ white-space: nowrap; }
+
+/* Allow radio/checkbox label to wrap if needed (see ticket #242) */
+.wForm form .oneChoice label, .wForm form .oneChoice .label { white-space: normal; display: inline-block; }  /* vertical-align: text-top; */
+
+/* Image replacement for checkbox/radio  */
+.wForm form .oneChoice.maskControl input[type=checkbox] { display: none;}
+.wForm form .oneChoice.maskControl input[type=radio] { display: none;}
+.wForm form .oneChoice.maskControl label, .wForm form .oneChoice.maskControl .label  { opacity: .4; margin-left: 0;}
+.wForm form .oneChoice.maskControl input[type=radio]:checked + .label    { opacity:1; }
+.wForm form .oneChoice.maskControl input[type=radio]:checked + label     { opacity:1; }
+.wForm form .oneChoice.maskControl input[type=checkbox]:checked + .label { opacity:1; }
+.wForm form .oneChoice.maskControl input[type=checkbox]:checked + label  { opacity:1; }
+
+/* Image replacement for checkbox/radio must have no effect if used in a matrix/likert scale layout */
+.wForm form .matrixLayout .oneChoice.maskControl input { display: initial !important;}
+
+/* Column layout for choices */
+.wForm form table.choices td {
+    min-width: 80px;
+}
+
+
+/* INPUT ------------------------------------------------------------------ */
+
+/* Wrapper around the input and related content (hint, validation error message).
+   Allows display of input on same line as label (for left/right aligned labels),
+   while keeping related content flush against the input. */
+.wForm .inputWrapper { display: -moz-inline-box; /* For Firefox 2.x */
+                       box-sizing: border-box;
+                       max-width: 100%;
+                       display: inline-block; vertical-align: top; position: relative; }
+
+.wForm .inputWrapper .delimiter { display: inline; }
+.wForm .inputWrapper .delimiterBefore { padding-right: 4px; }
+.wForm .inputWrapper .delimiterAfter { padding-left: 4px; }
+
+.wForm input[type=text], .wForm input[type=time], .wForm input[type=number], .wForm input[type=url], .wForm input[type=email], .wForm textarea {
+    max-width: 100%;
+}
+.wForm select {
+    max-width: 100%;
+}
+
+
+.wForm input[type=text]:hover, .wForm input[type=time], .wForm input[type=number]:hover, .wForm input[type=url]:hover, .wForm input[type=email]:hover, .wForm select:hover, .wForm textarea:hover,
+.wForm input[type=text]:focus, .wForm input[type=time], .wForm input[type=number]:focus, .wForm input[type=url]:focus, .wForm input[type=email]:focus, .wForm select:focus, .wForm textarea:focus {
+
+}
+
+.wForm textarea 	{ vertical-align: top; }
+
+.wForm textarea, .wForm input   {   font-family: inherit; font-size: inherit;}
+
+/* SECTION ---------------------------------------------------------------- */
+
+/* Multi-column section */
+.wForm .columnLayout td { vertical-align: top; }
+
+/* Grid section */
+.wForm .gridLayout		{ width: 98%; } /* accounts for some left/right margin */
+.wForm .gridLayout td 	{ vertical-align: top; }
+.wForm .gridLayout th 	{ vertical-align: top; font-weight: normal; }
+.wForm .gridLayout .headerRow th  { vertical-align: bottom; text-align: left;   padding: 0 0 0 8px }
+
+/* Align section title like other labels */
+.wForm .gridLayout .headerCol { text-align: left; padding: 5px 2px 0 8px;  }
+.wForm .labelsLeftAligned  .gridLayout .headerCol	{ text-align: left; }
+.wForm .labelsRightAligned .gridLayout .headerCol	{ text-align: right; }
+
+/* Fields of inline sections are displayed on the same line. */
+.wForm .inline div.oneField { display: inline-block; vertical-align: top; }
+
+/* Align title of inline section with other fields (min-width accounts for 2px border + 2px padding on following .oneField class, to match other label's 200px */
+.wForm div.section > .preField { padding: 0 2px 0 8px; }
+.wForm .labelsRightAligned .inline .preField { padding-top:4px } 	/* align label vertically by accounting for following .oneField class adding 4px (border+padding) to line height. */
+.wForm .labelsLeftAligned .inline .preField { padding-top:4px } 	/* align label vertically by accounting for following .oneField class adding 4px (border+padding) to line height. */
+
+/* Responsive grid layout */
+.wForm .gridLayout.stacked .label,
+.wForm .gridLayout.stacked label { width: auto !important; padding: inherit; }
+.wForm .gridLayout.stacked thead { display: none;}
+.wForm .gridLayout.stacked tr { display: block;}
+.wForm .gridLayout.stacked td { display: inline-block; text-align: left; }
+
+/* Matrix layout */
+.wForm .matrixLayout { width: 100%; }
+.wForm .matrixLayout { width: calc(100% - 12px); }
+
+.wForm .matrixLayout thead th { min-width: 70px;}
+
+/* Center checkbox/radio button in a matrix cell. */
+.wForm .matrixLayout td { text-align: center; }
+
+/* Add padding on column headers (choice label) */
+.wForm .matrixLayout tr.headerRow th { padding-left:8px; padding-right:8px; font-weight: normal; }
+
+/* Override font-weight and cell alignment for the first cell in a matrix row (contains question label). */
+.wForm .matrixLayout th.headerCol { text-align: left; font-weight: normal; }
+
+/* Align question label like other fields using the .oneField class*/
+.wForm .matrixLayout .label { padding: 2px 2px 2px 8px; }
+.wForm .labelsLeftAligned  .matrixLayout .headerCol	{ text-align: left; }
+.wForm .labelsRightAligned .matrixLayout .headerCol	{ text-align: right; }
+
+/* Alternate table row in grid and matrix layouts */
+.wForm .alternate-0 { background-color: rgba(0,0,0,.040); }
+.wForm .alternate-1 { background-color: rgba(0,0,0,.025); }
+
+/* Responsive matrix layout */
+.wForm .matrixLayout.stacked .label,
+.wForm .matrixLayout.stacked label { width: auto !important; padding: inherit; }
+.wForm .matrixLayout.stacked thead { display: none;}
+.wForm .matrixLayout.stacked tr { display: block;}
+.wForm .matrixLayout.stacked td { display: inline-block; text-align: left; }
+
+
+
+/* HTML Section (aka Text/Image section) --------------------------------- */
+.wForm .htmlSection { overflow:auto; border:2px solid transparent; padding: 2px 6px; }
+
+/* BUTTONS --------------------------------------------------------------- */
+
+.wForm .actions { border: 2px solid transparent; padding: 10px 2px; }
+
+/* Make submit/cancel buttons fairly large, set mouse pointer appropriately */
+.wForm .primaryAction, .wForm .secondaryAction { padding: 4px 15px; cursor: pointer; }
+
+/* Spacing between buttons */
+.wForm .secondaryAction			{ margin-right: 15px; }
+
+/* Paging behavior buttons */
+.wForm form .wfPagingButtons 	{ display: inline-block; border: 2px solid transparent; padding: 10px 2px; float: left; width: auto;  }
+.wForm .wfPagePreviousButton,
+.wForm .wfPageNextButton		{ margin-right: 15px; padding: 4px 15px; cursor: pointer; }
+
+/* wFORMS REPEATABLE SECTION ---------------------------------------------- */
+
+/* Repeated section (when not on a fieldset) */
+.wForm div.repeat { }
+/* Removeable section (when not on a fieldset) */
+.wForm div.removeable { }
+
+/* 'Repeat' Link (generated by the Repeat Behavior) */
+.wForm .duplicateSpan { text-align: right; }
+.wForm .duplicateLink {}
+
+/* 'Remove' link (generated by the Repeat Behavior) */
+.wForm .removeSpan { float: right; }
+.wForm .removeLink {}
+
+/* Repeat/Remove link when used in a table row */
+.wForm td .duplicateSpan, .wForm td .removeSpan { line-height: 100%; display: inline; padding: 5px 2px 0 8px;  }
+
+
+/* FIELD HINTS  ------------------------------------------------------------ */
+
+/* default styling */
+.wForm .field-hint .hint							{ opacity: 1;  }
+.wForm .field-hint-inactive .hint					{ opacity: .5; }
+
+.wForm .field-hint 									{ background-color: #FFFFFF; }
+
+/* Displayed on the side (with or without focus) */
+.wForm .hintsSide .field-hint,
+.wForm .hintsSide .field-hint-inactive 				{ display: inline-block; vertical-align:top; white-space: normal !important; }
+.wForm .hintsSide .field-hint .hint,
+.wForm .hintsSide .field-hint-inactive .hint 		{ display: inline-block; padding: 0 5px; }
+
+/* Displayed as a popup (with focus) */
+.wForm .hintsTooltip .field-hint 					{ display: block; position: absolute; z-index: 50;
+													  min-width: 200px;
+													  -webkit-box-shadow:  0 2px 8px rgba(0,0,0,0.3);
+													  -moz-box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+													  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+													}
+.wForm .hintsTooltip .field-hint .hint				{ display: block; padding: 5px;  }
+
+/* Displayed as a popup (without focus = hidden) */
+.wForm .hintsTooltip .field-hint-inactive 			{ display: none; }
+
+/* Displayed under the input */
+.wForm .hintsBelow .field-hint,
+.wForm .hintsBelow .field-hint-inactive 			{ display: block; }
+
+.wForm .hintsBelow .field-hint .hint,
+.wForm .hintsBelow .field-hint-inactive .hint		{ padding: 0; }
+
+/* Local override */
+.wForm .oneField.hintsTooltip .field-hint			{ position: absolute; z-index: 50; display: block;
+													  min-width: 200px;
+													  -webkit-box-shadow:  0 2px 6px rgba(0,0,0,0.3);
+													  -moz-box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+													  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+													}
+.wForm .oneField.hintsTooltip .field-hint .hint		{ display: block; }
+.wForm .oneField.hintsTooltip .field-hint-inactive 	{ display: none; }
+.wForm .oneField.hintsTooltip .hint 				{ padding: 5px; }
+
+.wForm .oneField.hintsSide .field-hint,
+.wForm .oneField.hintsSide .field-hint-inactive		{ display: inline-block; position: static;
+													  min-width: 0;
+													  -webkit-box-shadow: none;
+													  -moz-box-shadow: none;
+													  box-shadow: none;
+													  vertical-align:top; white-space: normal !important; }
+.wForm .oneField.hintsSide .hint 					{ padding: 0 5px; }
+
+.wForm .oneField.hintsBelow .field-hint,
+.wForm .oneField.hintsBelow .field-hint-inactive 	{ display: block; position: static;
+													  min-width: 0;
+													  -webkit-box-shadow: none;
+													  -moz-box-shadow: none;
+													  box-shadow: none; }
+.wForm .oneField.hintsBelow .hint, 					{ padding: 0; }
+
+
+/* Uploaded Files ----------------------------------------------------------- */
+.wForm form .uploadDelete .fileName {
+	text-decoration: line-through;
+	opacity:0.2;
+}
+.wForm form .uploadKeep .fileName {
+	text-decoration: none;
+	color: #000;
+}
+
+
+/* MISC.   ------------------------------------------------------------------ */
+
+/* Asterisk on required fields - provide sensible default color and size */
+.wForm .reqMark:after { content: " *"; color: #F00; font-size: 90%; }
+
+.wFormContainer .errMsg {  border: 2px solid transparent; color: red; }
+.wFormContainer .linkedErrMsg {  border: 2px solid transparent; color: blue; }
+.wFormContainer .errLink { text-decoration: underline; color: blue; }
+.wFormContainer .errFld { }
+
+.wForm .captchaHelp {
+    font-size: 85%;
+    opacity: 0.75;
+    padding: 0 8px;
+    margin-top: 0.75em;
+}
+.wForm fieldset.captcha .preField {  min-width: 0; width: 75px !important; }
+.wForm fieldset.captcha input {  width: 110px !important; }
+.wForm fieldset.captcha p.instructions { margin-top: 0.75em; }
+.wForm fieldset.captcha img { border: 1px solid #999999; padding: 2px; margin-bottom: 1em; }
+
+
+/* align support info with .oneField element */
+.wFormContainer .supportInfo	{ font-size: 12px;  border: 2px solid transparent; padding: 17px; clear: left; }
+
+/* Make readonly calculated fields look like plain text */
+.wForm .readonly { background-color: transparent !important; border: none !important; background-image: none !important; }
+
+/* JS ONLY CSS - Normally present is separate wforms-jsonly.css ------------- */
+
+/* Handle conditional section visibility */
+.wForm form .onstate-a,  .wForm form .onstate-b, .wForm form .onstate-c,  .wForm form .onstate-d,
+.wForm form .onstate-e,  .wForm form .onstate-f, .wForm form .onstate-g,  .wForm form .onstate-h,
+.wForm form .onstate-i,  .wForm form .onstate-j, .wForm form .onstate-k,  .wForm form .onstate-l,
+.wForm form .onstate-m,  .wForm form .onstate-n, .wForm form .onstate-o,  .wForm form .onstate-p,
+.wForm form .onstate-q,  .wForm form .onstate-r, .wForm form .onstate-s,  .wForm form .onstate-t,
+.wForm form .onstate-u,  .wForm form .onstate-v, .wForm form .onstate-w,  .wForm form .onstate-x,
+.wForm form .onstate-y,  .wForm form .onstate-z, .wForm form .onstate-aa, .wForm form .onstate-ab,
+.wForm form .onstate-ac, .wForm form .onstate-ad,.wForm form .onstate-ae, .wForm form .onstate-af,
+.wForm form .onstate-ag, .wForm form .onstate-ah,.wForm form .onstate-ai, .wForm form .onstate-aj,
+.wForm form .onstate-ak, .wForm form .onstate-al,.wForm form .onstate-am, .wForm form .onstate-an,
+.wForm form .onstate-ao, .wForm form .onstate-ap,.wForm form .onstate-aq, .wForm form .onstate-ar,
+.wForm form .onstate-as, .wForm form .onstate-at,.wForm form .onstate-au, .wForm form .onstate-av,
+.wForm form .onstate-aw, .wForm form .onstate-ax,.wForm form .onstate-ay, .wForm form .onstate-az,
+.wForm form .onstate-ba, .wForm form .onstate-bb,.wForm form .onstate-bc, .wForm form .onstate-bd,
+.wForm form .onstate-be, .wForm form .onstate-bf,.wForm form .onstate-bg, .wForm form .onstate-bh,
+.wForm form .onstate-bi, .wForm form .onstate-bj,.wForm form .onstate-bk, .wForm form .onstate-bl {
+	display: block !important;
+}
+/* offstate classes for the Switch Behavior are in wforms-jsonly.css */
+
+/* Handle page visibility */
+html .wForm form .wfPage, html .wForm form .wfHideSubmit {
+	display: none !important;
+}
+html .wForm form .wfCurrentPage {
+	display: block !important;
+}
+
+
+/* Auto Format related*/
+.wForm .autoformatprompt .label{
+    color: #dc143c;
+}
+
+.wForm .autoformatprompt .delete{
+    color: #b0c4de;
+}
+
+.wForm .autoformatprompt .noinput{
+    color: #b0c4de;
+}
+
+.wForm .autoformatprompt .input{
+    font-weight: bold;
+}
+
+.wForm .autoformatprompt{
+    position: absolute;
+    z-index: 127;
+    padding: 3px 0px 0px 2px;
+    white-space: nowrap;
+}
+
+.wForm .autoformatprompt-control{
+    background-color: transparent;
+    position: relative;
+    z-index: 128;
+}
+.wForm .autoformatprompt-hook{
+    z-index: 125;
+}
+
+.wForm .autoformat-background{
+	z-index: 126;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+/* "Response Submitted" confirmation page */
+.wForm .wFormThankYou  					{  }
+
+/* "Response Saved" confirmation page */
+.wForm .wFormsCustomMessage 			{ font-size: 22px; margin-top: 15px; }
+.wForm .wFormsResumeInstructions li 	{ font-size:16px; line-height:150%; }
+.wForm .wFormsSavedInstructions 		{ margin-top: 15px; }
+
+#wFormsResumeList th { text-align: left; }
+
+
+
+
+/* Save & Resume dialog */
+.saveAndResume 			{ text-align:right;	font-size: small; }
+.saveAndResume
+	fieldset 			{ text-align:left; }
+.saveAndResume
+	.preField 			{ width: 9em !important; min-width: 9em  !important; }
+.saveAndResume
+	.postField 			{ margin-right:0; }
+.saveAndResume
+	.instructions 		{ margin: 1em 6px; }
+.saveAndResume
+	#tfa_resumeEmail 	{ width: 195px; }
+.saveAndResume
+	#tfa_resumePassword	{ width: 195px; }
+.saveAndResume
+	#tfa_confirmPassword { width: 195px;}
+.saveAndResume .actions
+	#tfa_resumeLater.wfHideSubmit
+						{ display: inline !important; }
+.onstate-resumelater 	{ display: block }
+
+
+/* Generic FA Error Messages */
+.errorMessage 				{ margin: 10px 15px; padding: 15px; border: 1px solid #F00 !important; font-family:sans-serif; font-weight: bold; }
+.errorMessage a 			{ text-decoration: none;  font-weight: normal; }
+.wForm .forgotPasswordLink	{ font-size: small; }
+.wForm .assistanceLink		{ font-size: small; }
+.wForm .startNewLink		{ font-size: small; }
+
+
+/* Thank you & Help messages */
+.wFormThankYou  		{ min-height: 150px; }
+.wFormHelp  			{ min-height: 150px; }
+
+/* Review page */
+.reviewHeader, .reviewResponse, .reviewFooter { padding: 20px; }
+.reviewResponse .responseData .switchedOff    {	display: none; }
+.reviewResponse .responseData  .showSwitchedOff .switchedOff,
+.reviewResponse .responseData  .showSwitchedOff .switchedOff .question { color: #BBB !important; }
+
+.reviewResponse .typehidden { display: none; } /* Hide hidden field in the response review */
+
+.reviewFooter .reviewActions { text-align: left; }
+.reviewFooter .reviewActions img { vertical-align: middle;}
+
+.reviewResponse .responseData .page {
+	margin: 1.2em 0;
+	padding-bottom: 1.2em;
+	border-bottom: 2px dotted #CCC;
+}
+
+/* Fieldset / Grid layout */
+.reviewResponse .responseData .fieldset {
+	margin: 1.2em 0;
+	border: 1px solid #BBB;
+	padding: 10px;
+	-moz-border-radius: 0.5em;
+	-webkit-border-radius: 0.5em;
+	border-radius: 0.5em;
+
+}
+.reviewResponse .responseData .fieldset h4 {
+	margin: 0;
+}
+.reviewResponse .responseData .inlineDiv {
+	margin: 1em 0 0 0;
+}
+.reviewResponse .responseData table {
+	border-collapse: collapse;
+}
+.reviewResponse .responseData table td {
+	vertical-align: top;
+}
+.reviewResponse .responseData .grid {
+	border: 1px solid #eee;
+}
+.reviewResponse .responseData .grid th {
+	border-right: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+	padding: 5px 8px 5px 5px;
+	text-align: left;
+	font-weight: normal;
+	color: #656565;
+}
+.reviewResponse .responseData .grid .alternate {
+	background-color: #F4F5F4;
+}
+.reviewResponse .responseData .grid td {
+	border: 1px solid #eee;
+}
+/* Question Label */
+.reviewResponse .responseData .grid .question {
+	padding: 5px 5px 5px 5px;
+}
+.reviewResponse .responseData table .question {
+	padding: 1em 8px 0 0;
+	margin: 0;
+}
+.reviewResponse .responseData .question {
+	margin: 1em 0 0 0;
+}
+.reviewResponse .responseData table .unknownField {
+	padding: 5px 8px 5px 0;
+	text-align: right;
+}
+/* User Response (free text) */
+.reviewResponse .responseData .grid .response {
+	/* border-right: 1px solid #eee; */
+	padding: 5px 5px 5px 5px;
+}
+.reviewResponse .responseData table .response {
+
+}
+.reviewResponse .responseData .response {
+	font-weight: bold;
+}
+/* User Response (Multiple Choice) */
+.reviewResponse .responseData .response ul {
+	padding: 0;
+	margin: 0;
+}
+.reviewResponse .responseData .response ul .singleAnswer {
+	margin: 0  !important;
+	padding: 0 !important;
+	border-bottom: none !important;
+	list-style-type: none !important;
+	font-weight: bold;
+}
+.reviewResponse .responseData .response ul .multipleAnswer {
+	margin: 0 0 0 15px !important;
+	padding: 0 !important;
+	font-weight: bold;
+}
+.reviewResponse .attachedFiles h4 { font-style: italic; font-weight: normal; margin: 0 0 6px 0;}
+
+@media print {
+	 .reviewActions, .reviewHeader{ display: none; }
+	 .responseData h3, .responseData h4 { page-break-after: avoid; }
+	 /* Following not enabled.  Can be added manually in branding on a case-by-case basis. */
+	 /* .responseData .fieldset { page-break-inside: avoid; } */
+	 /* .responseData .page { page-break-after: always; } */
+}
+
+
+/* Tabbed Navigation for multi-page forms */
+.wfTabCurrentPage       { font-weight: bold; }
+#wfTabNav               { font-size: smaller; border: 2px solid transparent; padding: 2px 6px; text-align: right; }
+.wfTab, .wfTabSep		{ display: inline-block; }

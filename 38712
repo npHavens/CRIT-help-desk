@@ -1,0 +1,83 @@
+.wForm input[type=text], .wForm input[type=password], .wForm input[type=file], .wForm textarea, .wForm select {
+     font-size: 38px;
+}
+
+.wForm .oneField {
+     font-size: 26px;
+     text-align: center;
+}
+
+.wForm fieldset {
+     font-size: 26px;
+     border-width: 0;
+     border-style: dotted;
+     margin: 0 auto;
+}
+
+.wFormTitle {
+     font-size: 48px;
+     text-align: center;
+     height: px;
+     margin: px;
+     padding: px;
+     font-family: Arial, Arial, Helvetica, sans-serif;
+     border-style: none;
+     border-width: 12px;
+}
+
+.wForm legend, .wForm h4 {
+     font-size: 36px;
+     text-align: center;
+     height: 20px;
+     font-family: inherit;
+}
+
+.wForm input[type=button], .wForm input[type=submit] {
+     font-size: 28px;
+     background-color: #ed71ed;
+     text-align: center;
+}
+
+.wForm #wfTabNav {
+     font-size: px;
+}
+
+.wFormContainer {
+     border-width: 0;
+     border-style: solid;
+     margin: 0 auto;
+     font-family: Arial, Arial, Helvetica, sans-serif;
+     font-size: 48px;
+     height: px;
+}
+
+.wForm input[type=text], .wForm input[type=password], .wForm input[type=file] {
+     height: 80px;
+}
+
+.wForm textarea {
+     width: 250px;
+     background: #FFFFFF url(//saic.tfaforms.net/theme-editor/images/input_bg.png) repeat-x -2px -2px;
+     border-color: #888888 #CCCCCC #CCCCCC;
+     border-style: solid;
+     border-width: 1px;
+     padding: 1px 1px 1px 1px;
+}
+
+.wForm .oneField input {
+     background: #FFFFFF url(//saic.tfaforms.net/theme-editor/images/input_bg.png) repeat-x -2px -2px;
+     border-color: #888888 #CCCCCC #CCCCCC;
+     border-style: solid;
+     border-width: 1px;
+     padding: 2px 0 2px 2px;
+}
+
+.wForm .oneChoice input {
+     border: none !important;
+     background: none !important;
+}
+
+.wFormWebPage {
+     background-color: #dedede;
+}
+

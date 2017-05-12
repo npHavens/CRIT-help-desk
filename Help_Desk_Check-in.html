@@ -1,0 +1,572 @@
+<link rel="stylesheet prefetch" href="//code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="//use.fontawesome.com/43143907d2.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
+<style>
+  
+#instructions {
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+#button-row_1 {
+  margin-top: 30px;
+}
+
+#button-row_2 > .button-item {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+#button-row_3 > .button-item, #button-row_4 > .button-item {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.button-item * .app-icon * {
+  height: 2.5em;
+}
+
+#button_2 * .button-icon *{
+  height: 3em;
+}
+
+#button_3 * .button-icon * {
+  height: 3.5em;
+}
+
+.button-item * .button-text {
+  font-size: 2em;
+}
+
+.button-item * .fa { 
+  font-size: 80px;
+}
+
+#spacer {
+  display: flex;
+  padding: 200px;
+}
+
+.app-icon * {
+  height: 4em;
+  margin-top: 30px;
+}
+
+.wForm .button-con {
+  display: flex;
+  opacity: 0;
+}
+.wForm .button-item {
+  background: linear-gradient(to bottom, #FFCE4E, #FF7175);
+  font-size: 1rem;
+  display: flex;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin: 1em;
+  border-radius: 30px;
+  flex: 1;
+}
+.wForm .button-item:first-child {
+  margin-left: -5em;
+}
+.wForm .button-item:last-child {
+  margin-right: -5em;
+}
+.wForm .button-item:hover {
+  cursor: pointer;
+}
+.wForm .button-item .inner {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.wForm .button-item .fa {
+  display: block;
+  text-align: center;
+}
+.wForm .button-item .button-text {
+  text-align: center;
+  display: block;
+  margin-top: .5em;
+}
+.wForm .title-con {
+  text-align: center;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.wForm .title-con h2 {
+  font-size: 36px;
+  margin-bottom: 14px;
+}
+.wForm .title-con p {
+  font-size: 14px;
+  margin-bottom: 2em;
+}
+.wForm #tfa_16-T {
+  font-size: 36px;
+}
+
+
+.oneField.field-container-D.labelsAbove * {
+  opacity: 0;
+}
+
+.primaryAction {
+  opacity: 0;
+}  
+  
+body {
+  background: #eee;
+  margin: 0;
+  font-family: "Gotham SSm A", "Gotham SSm B" !important;
+  font-style: normal;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+.wFormContainer {
+  max-width: 100% !important;
+}
+.wFormContainer .wForm form {
+  padding: 0;
+}
+.wFormContainer .wForm form input[type=button], .wFormContainer .wForm form .wForm input[type=submit] {
+  font-size: 28px;
+  background-color: #ee4aa9 !important;
+  text-align: center;
+  border: 0;
+  padding: .5em 1.75em;
+  border-radius: 4px;
+  color: #fff;
+  margin-top: 1em;
+}
+.wFormContainer .wForm form .preField {
+  width: 300px;
+  padding-right: 5px;
+  text-align: left;
+  float: left;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+.wFormContainer .wForm form .primaryAction {
+  font-size: 28px;
+  background-color: #ee4aa9 !important;
+  text-align: center;
+  border: 0;
+  padding: .5em 1.75em;
+  border-radius: 4px;
+  color: #fff !important;
+  margin-top: 1em;
+  display: block;
+  margin: 1em auto;
+}
+.wFormContainer .wForm form .labelsRightAligned .preField {
+  text-align: center;
+}
+.wFormContainer .wForm form .section {
+  max-width: 620px;
+  margin: 0 auto;
+}
+.wFormContainer .wForm form .wfPagingButtons {
+  display: block;
+  border: 2px solid transparent;
+  padding: 10px 2px;
+  float: initial;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+}
+.wFormContainer .wForm form .inputWrapper {
+  width: 100%;
+}
+.wFormContainer .wForm form select {
+  max-width: 100%;
+  width: 100%;
+}
+.wFormContainer .wForm {
+  padding: 0;
+}
+.wFormContainer .wForm .pageSection > h4 {
+  padding: 1em 0;
+  height: initial;
+  margin-top: .5em;
+}
+.wFormContainer .wForm .pageSection > h4#tfa_17-T:after {
+  font-family: "FontAwesome";
+  content: '\f2c3';
+  display: block;
+  margin-top: .25em;
+  font-size: 2em;
+}
+.wFormContainer .wForm .reqMark:after {
+  color: #ee4aa9;
+}
+.wFormContainer .wFormTitle {
+  font-size: 2rem;
+  margin: 0;
+  padding: 20px 0 !important;
+  color: #fff;
+  background: linear-gradient(330deg, #ee4aa9, #884aee, #4aeecb);
+  background-size: 600% 600%;
+  -webkit-animation: AnimationName 23s ease infinite;
+  -moz-animation: AnimationName 23s ease infinite;
+  -o-animation: AnimationName 23s ease infinite;
+  -ms-animation: AnimationName 23s ease infinite;
+}
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 1% 0%;
+  }
+  50% {
+    background-position: 99% 100%;
+  }
+  100% {
+    background-position: 1% 0%;
+  }
+}
+@-moz-keyframes AnimationName {
+  0% {
+    background-position: 1% 0%;
+  }
+  50% {
+    background-position: 99% 100%;
+  }
+  100% {
+    background-position: 1% 0%;
+  }
+}
+@-o-keyframes AnimationName {
+  0% {
+    background-position: 1% 0%;
+  }
+  50% {
+    background-position: 99% 100%;
+  }
+  100% {
+    background-position: 1% 0%;
+  }
+}
+@-ms-keyframes AnimationName {
+  0% {
+    background-position: 1% 0%;
+  }
+  50% {
+    background-position: 99% 100%;
+  }
+  100% {
+    background-position: 1% 0%;
+  }
+}
+@keyframes AnimationName {
+  0% {
+    background-position: 1% 0%;
+  }
+  50% {
+    background-position: 99% 100%;
+  }
+  100% {
+    background-position: 1% 0%;
+  }
+}
+.wFormContainer .label {
+  color: #666;
+  font-weight: normal;
+}
+.wFormContainer #tfa_1-D {
+  padding: 1em 0;
+}
+.wFormContainer #tfa_1-D:after {
+  content: 'If your card does not read, type it into the field above.';
+  font-size: 1.25rem;
+  display: block;
+  text-align: center;
+  padding-top: 1em;
+}
+.wFormContainer .supportInfo {
+  text-align: center;
+}
+
+@keyframes ellipsis {
+  to {
+    width: 20px;
+  }
+}
+@-webkit-keyframes ellipsis {
+  to {
+    width: 20px;
+  }
+}
+.wfPagePreviousButton {
+  display: none;
+}
+
+#tfa_1-D {
+  margin-top: 80px;
+}
+
+#tfa_1-D, .supportInfo, .wfPageNextButton {
+  opacity: 0;
+}
+
+#tfa_17-T {
+  margin-top: 1em;
+  font-size: 56px;
+}
+
+#tfa_16-T {
+  font-size: 42px;
+}
+
+#tfa_17:after {
+  content: 'Don\'t have your ID? Tap here';
+  font-size: 1.5rem;
+  text-align: center;
+  display: block;
+}
+
+* {
+  -ms-overflow-style: none;
+}
+
+.ui-dialog-titlebar {
+  display: none;
+}
+
+#dialog {
+  padding: 80px;
+  text-align: center;
+  font-family: sans-serif;
+}
+#dialog p {
+  text-align: left;
+}
+#dialog .fa-check-circle-o {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+  
+h3#tfa_0-T:after {
+  content: '\f053\0020\0020\0020 Reset form';
+  position: absolute;
+  left: 20px;
+  top: 22px;
+  font-size: 16px;
+  font-weight: normal;
+  background: rgba(255,255,255,.5);
+  padding: .5em;
+  border-radius: 4px;
+  color: #fff;
+  font-family: fontawesome, helvetica;
+}
+
+</style>
+
+<script type="text/javascript"> 
+  
+$(document).ready(function() {
+
+function showElement(element) {
+  element.css('opacity', '1');
+}
+  
+function renderButtonIcon(SVG) {
+  return '<object data= ' + SVG + ' type="image/svg+xml"></object>';
+}
+  
+function renderFontIcon(str) {
+  return '<i class="fa fa-' + str + '"></i>';
+}
+  
+  $(function() {
+    formUtils(); 
+   
+    function formUtils() {
+      setTimeout(formUtils, 1000); 
+      $('#tfa_1').focus(); 
+      
+      var idNum = $('#tfa_1').val();
+      
+      if (idNum.length === 14) {
+        $('#tfa_1').val(idNum.substring(5, 12));
+      }
+    
+      if (idNum.length === 7) { 
+         $('#wfPageNextId1').click();
+      }  
+      
+      if ($('#wfPgIndex-2').hasClass('wfCurrentPage') && !$('#wfPgIndex-2').hasClass('scrolledToTop')) { 
+        window.scrollTo(0, 100);
+        $('#wfPgIndex-2').addClass('scrolledToTop');
+        showElement($('.button-con'));
+      } 
+      
+      if ($('#wfPgIndex-1').hasClass('wfCurrentPage') && !$('#wfPgIndex-1').hasClass('confirmed')) {  
+        $('<div id="dialog"></div>').append(renderFontIcon("check-circle-o"))
+          .append('<h2>Your check-in is complete!</h2>')
+          .append('<p>Please have a seat and someone will be with you shortly.</p>')
+          .dialog({              
+            hide: { duration: 500 },
+            minWidth: 500 
+          });
+        
+         setTimeout(function(){
+           $('#dialog').dialog('close');
+         }, 3000);
+                         
+         $('#wfPgIndex-1').addClass('confirmed');              
+      }
+    }
+  });
+  
+  
+  $('.wfPageNextButton').after('<div id= "spacer"></div>');
+  
+  $('#tfa_17').click(function() {
+    showElement($('#tfa_1-D, .wfPageNextButton'));
+  }); 
+  
+  $('#tfa_0-T').click(function() {                                
+    location.reload();
+  });
+  
+ 
+  function buildButtonRow(issueRow, rowNum) {  
+    var buttonContainer = $('<div class="button-con" id= "button-row_' + rowNum + '"></div>');
+    
+    issueRow.forEach(function(issueObj) {  
+      var buttonItem = $('<div class="button-item" id= "button_'+ issueObj.issueNum +'">')
+                         .append('<div class="inner"></div></div>');
+
+      var buttonItemInner = buttonItem.children('.inner');
+      var buttonIcon = issueObj.logo || renderFontIcon(issueObj.icon);     
+      buttonItemInner.append($('<span class="button-icon"/>').html(buttonIcon))
+        .append($('<span class="button-text"/>').text(issueObj.issueName));
+     
+      issueObj.options.reduce(function(button, option, i) {
+        return button.attr('data-opt-' + i, option);
+      }, buttonItem);
+      
+      if (issueObj.appIcons) {   
+        var logoGroup = issueObj.appIcons.reduce(function(logoContainer, logo) {
+                          return logoContainer.append($('<span class= "app-icon"/>').html(logo));
+                        }, $('<div class="logo-con"></div>'));
+        buttonItemInner.append(logoGroup);                                                    
+      }    
+      buttonContainer.append(buttonItem);
+    });   
+    return buttonContainer;
+  }
+  
+ function buildButtonPage(issueArr, headerElement, rowLength) {
+     issueArr.forEach(function(issue, i) {
+       if (i % rowLength === 0) {
+         var issueGroup = issueArr.slice(i, i + rowLength);
+         headerElement.append(buildButtonRow(issueGroup, i / rowLength + 1));
+       }
+     });
+   } 
+  
+     var illustratorIcon = renderButtonIcon('http://forms.saic.edu/files/Form-Icons_Adobe/illustrator-icon.svg');
+     var photoshopIcon = renderButtonIcon('http://forms.saic.edu/files/Form-Icons_Adobe/photoshop-icon2.svg');
+     var premierIcon = renderButtonIcon('http://forms.saic.edu/files/Form-Icons_Adobe/premier-icon.svg');
+     var indesignIcon = renderButtonIcon('http://forms.saic.edu/files/Form-Icons_Adobe/indesign-icon.svg');  
+     var wordIcon = renderButtonIcon('http://forms.saic.edu/files/Form-Icons_Office/word-logo.svg');
+     var excelIcon = renderButtonIcon('http://forms.saic.edu/files/Form-Icons_Office/excel-logo2.svg');
+     var powerpointIcon = renderButtonIcon('http://forms.saic.edu/files/Form-Icons_Office/powerpoint-logo.svg'); 
+     var gmailIcon = renderButtonIcon('http://forms.saic.edu/files/Form-icons_Gmail/gmail-icon.svg');
+     var gcalIcon = renderButtonIcon('http://forms.saic.edu/files/Form-icons_Gmail/gcal-icon.svg');
+     var gdriveIcon = renderButtonIcon('http://forms.saic.edu/files/Form-icons_Gmail/dgrive-icon.svg'); 
+     var rhinoIcon = renderButtonIcon('http://forms.saic.edu/files/Form-icons_AIADO/rhino-logo.svg');
+     var autocadIcon = renderButtonIcon('http://forms.saic.edu/files/Form-icons_AIADO/autocad-logo.svg');
+     var revitIcon = renderButtonIcon('http://forms.saic.edu/files/Form-icons_AIADO/revit-logo.svg');
+     var mayaIcon = renderButtonIcon('http://forms.saic.edu/files/Form-icons_AIADO/maya-logo.svg');
+     var solidworksIcon = renderButtonIcon('http://forms.saic.edu/files/Form-icons_AIADO/solidworks-logo.svg');
+     var keyshotIcon = renderButtonIcon('http://forms.saic.edu/files/Form-icons_AIADO/keyshot-logo.svg');
+  
+     var commonIssues = [
+      { issueName: 'Wifi',
+        icon: 'wifi', 
+        options: ['Network', 'WiFi', 'Wireless Connectivity'],
+        issueNum: 1},
+      { issueName: 'Adobe Creative Cloud', 
+        logo: renderButtonIcon("http://forms.saic.edu/files/Form-Icons_Adobe/creative-cloud-cc-logo.svg"), 
+        options: ['Software & Online Services', 'Adobe Creative Cloud', 'Adobe ID Login Issues'],
+        appIcons: [photoshopIcon, illustratorIcon, premierIcon, indesignIcon],
+        issueNum: 2},
+       { issueName: 'Microsoft Office', 
+        logo: renderButtonIcon("http://forms.saic.edu/files/Form-Icons_Office/office-logo.svg"), 
+        options: ['Software & Online Services', 'Microsoft Office 365', 'Office 365 Login Issues'],
+        appIcons: [wordIcon, excelIcon, powerpointIcon],
+        issueNum: 3},
+       {issueName: 'Printing',
+        icon: 'print',
+        options: ['Printing', 'Canon Copier/HP Printer/Xerox Printer', 'Printer Driver'],
+        issueNum: 4},
+       { issueName: 'UserName/Password', 
+        icon: 'user', 
+        options: ['Software & Online Services', 'Password/Single Sign-On', 'SAIC Password'],
+        issueNum: 5},
+       { issueName: 'Email/Calendar', 
+        icon: '', 
+        options: ['Software & Online Services', 'Google Apps & Gmail', 'Google Apps (Gmail, Drive, and Calendar)'],
+        appIcons: [gmailIcon, gcalIcon, gdriveIcon],
+        issueNum: 6},     
+       { issueName: 'AIADO Software', 
+        logo: '', 
+        options: ['Software & Online Services', 'AIADO Special Software', 'AIADO Software'],
+        appIcons: [rhinoIcon, autocadIcon, revitIcon, mayaIcon, solidworksIcon, keyshotIcon],
+        issueNum: 7},
+       {issueName: 'Other Issue',
+        icon: '',
+        options: ['Other Category', 'Other Sub Types', 'Other Issue'],
+        issueNum: 8}
+     ].sort(function(a, b){
+       return a.issueNum - b.issueNum;
+     });
+     
+    $('#tfa_16-T').append('<div id= "instructions">Please select a button</div>');
+    buildButtonPage(commonIssues,  $('#tfa_16-T'), 2);
+     
+     $('.button-item').click(function() {
+        var activeButton = $(this);
+        var subType =   activeButton.data('opt-0');
+        var category =  activeButton.data('opt-1'); 
+        var issue =     activeButton.data('opt-2');
+       
+        activeButton.css('opacity', '.5');
+    
+        if (subType === 'Other Category') {          
+          var otherText = 'Please select the categories that best describe your issue';
+          $('html, body').animate({scrollTop: $(document).height()}, 'slow');
+          $('#tfa_10-L').before('<h2 id= "other_cat_T">' + otherText + '</h2>');
+          showElement($('.oneField.field-container-D.labelsAbove *, .primaryAction , #other_cat_T'));
+          
+        } else {        
+          setTimeout(function() {
+             activeButton.find('.button-text').text('Submitting..');
+           }, 500);
+           
+          function selectOption(optionGroup, dataOpt) {
+            optionGroup.filter(function() {
+              return $(this).text() === dataOpt;
+            }).prop('selected', true).trigger('change');
+            
+            $('optgroup[label="'+ dataOpt +'"]').unwrap('span').show().removeAttr('disabled')
+              .children().removeAttr('disabled');
+          }
+               
+          selectOption($("select#tfa_10 option"), subType);
+          selectOption($("select#tfa_19 option"), category);
+          selectOption($("select#tfa_71 option"), issue);
+          
+          $('.primaryAction').click();
+        }
+      });  
+});
+
+
+</script>
+

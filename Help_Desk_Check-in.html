@@ -3,7 +3,7 @@
 <script src="//use.fontawesome.com/43143907d2.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
 <style>
-  
+
 #instructions {
   font-size: 24px;
   margin-top: 20px;
@@ -39,7 +39,7 @@
   font-size: 2em;
 }
 
-.button-item * .fa { 
+.button-item * .fa {
   font-size: 80px;
 }
 
@@ -116,8 +116,8 @@
 
 .primaryAction {
   opacity: 0;
-}  
-  
+}
+
 body {
   background: #eee;
   margin: 0;
@@ -347,7 +347,7 @@ body {
   font-size: 64px;
   margin-bottom: 20px;
 }
-  
+
 h3#tfa_0-T:after {
   content: '\f053\0020\0020\0020 Reset form';
   position: absolute;
@@ -364,102 +364,102 @@ h3#tfa_0-T:after {
 
 </style>
 
-<script type="text/javascript"> 
-  
+<script type="text/javascript">
+
 $(document).ready(function() {
 
 function showElement(element) {
   element.css('opacity', '1');
 }
-  
+
 function renderButtonIcon(SVG) {
   return '<object data= ' + SVG + ' type="image/svg+xml"></object>';
 }
-  
+
 function renderFontIcon(str) {
   return '<i class="fa fa-' + str + '"></i>';
 }
-  
+
   $(function() {
-    formUtils(); 
-   
+    formUtils();
+
     function formUtils() {
-      setTimeout(formUtils, 1000); 
-      $('#tfa_1').focus(); 
-      
+      setTimeout(formUtils, 1000);
+      $('#tfa_1').focus();
+
       var idNum = $('#tfa_1').val();
-      
+
       if (idNum.length === 14) {
         $('#tfa_1').val(idNum.substring(5, 12));
       }
-    
-      if (idNum.length === 7) { 
+
+      if (idNum.length === 7) {
          $('#wfPageNextId1').click();
-      }  
-      
-      if ($('#wfPgIndex-2').hasClass('wfCurrentPage') && !$('#wfPgIndex-2').hasClass('scrolledToTop')) { 
+      }
+
+      if ($('#wfPgIndex-2').hasClass('wfCurrentPage') && !$('#wfPgIndex-2').hasClass('scrolledToTop')) {
         window.scrollTo(0, 100);
         $('#wfPgIndex-2').addClass('scrolledToTop');
         showElement($('.button-con'));
-      } 
-      
-      if ($('#wfPgIndex-1').hasClass('wfCurrentPage') && !$('#wfPgIndex-1').hasClass('confirmed')) {  
+      }
+
+      if ($('#wfPgIndex-1').hasClass('wfCurrentPage') && !$('#wfPgIndex-1').hasClass('confirmed')) {
         $('<div id="dialog"></div>').append(renderFontIcon("check-circle-o"))
           .append('<h2>Your check-in is complete!</h2>')
           .append('<p>Please have a seat and someone will be with you shortly.</p>')
-          .dialog({              
+          .dialog({
             hide: { duration: 500 },
-            minWidth: 500 
+            minWidth: 500
           });
-        
+
          setTimeout(function(){
            $('#dialog').dialog('close');
          }, 3000);
-                         
-         $('#wfPgIndex-1').addClass('confirmed');              
+
+         $('#wfPgIndex-1').addClass('confirmed');
       }
     }
   });
-  
-  
+
+
   $('.wfPageNextButton').after('<div id= "spacer"></div>');
-  
+
   $('#tfa_17').click(function() {
     showElement($('#tfa_1-D, .wfPageNextButton'));
-  }); 
-  
-  $('#tfa_0-T').click(function() {                                
+  });
+
+  $('#tfa_0-T').click(function() {
     location.reload();
   });
-  
- 
-  function buildButtonRow(issueRow, rowNum) {  
+
+
+  function buildButtonRow(issueRow, rowNum) {
     var buttonContainer = $('<div class="button-con" id= "button-row_' + rowNum + '"></div>');
-    
-    issueRow.forEach(function(issueObj) {  
+
+    issueRow.forEach(function(issueObj) {
       var buttonItem = $('<div class="button-item" id= "button_'+ issueObj.issueNum +'">')
                          .append('<div class="inner"></div></div>');
 
       var buttonItemInner = buttonItem.children('.inner');
-      var buttonIcon = issueObj.logo || renderFontIcon(issueObj.icon);     
+      var buttonIcon = issueObj.logo || renderFontIcon(issueObj.icon);
       buttonItemInner.append($('<span class="button-icon"/>').html(buttonIcon))
         .append($('<span class="button-text"/>').text(issueObj.issueName));
-     
+
       issueObj.options.reduce(function(button, option, i) {
         return button.attr('data-opt-' + i, option);
       }, buttonItem);
-      
-      if (issueObj.appIcons) {   
+
+      if (issueObj.appIcons) {
         var logoGroup = issueObj.appIcons.reduce(function(logoContainer, logo) {
                           return logoContainer.append($('<span class= "app-icon"/>').html(logo));
                         }, $('<div class="logo-con"></div>'));
-        buttonItemInner.append(logoGroup);                                                    
-      }    
+        buttonItemInner.append(logoGroup);
+      }
       buttonContainer.append(buttonItem);
-    });   
+    });
     return buttonContainer;
   }
-  
+
  function buildButtonPage(issueArr, headerElement, rowLength) {
      issueArr.forEach(function(issue, i) {
        if (i % rowLength === 0) {
@@ -467,37 +467,37 @@ function renderFontIcon(str) {
          headerElement.append(buildButtonRow(issueGroup, i / rowLength + 1));
        }
      });
-   } 
-  
+   }
+
      var illustratorIcon = renderButtonIcon('http://forms.saic.edu/files/Form-Icons_Adobe/illustrator-icon.svg');
      var photoshopIcon = renderButtonIcon('http://forms.saic.edu/files/Form-Icons_Adobe/photoshop-icon2.svg');
      var premierIcon = renderButtonIcon('http://forms.saic.edu/files/Form-Icons_Adobe/premier-icon.svg');
-     var indesignIcon = renderButtonIcon('http://forms.saic.edu/files/Form-Icons_Adobe/indesign-icon.svg');  
+     var indesignIcon = renderButtonIcon('http://forms.saic.edu/files/Form-Icons_Adobe/indesign-icon.svg');
      var wordIcon = renderButtonIcon('http://forms.saic.edu/files/Form-Icons_Office/word-logo.svg');
      var excelIcon = renderButtonIcon('http://forms.saic.edu/files/Form-Icons_Office/excel-logo2.svg');
-     var powerpointIcon = renderButtonIcon('http://forms.saic.edu/files/Form-Icons_Office/powerpoint-logo.svg'); 
+     var powerpointIcon = renderButtonIcon('http://forms.saic.edu/files/Form-Icons_Office/powerpoint-logo.svg');
      var gmailIcon = renderButtonIcon('http://forms.saic.edu/files/Form-icons_Gmail/gmail-icon.svg');
      var gcalIcon = renderButtonIcon('http://forms.saic.edu/files/Form-icons_Gmail/gcal-icon.svg');
-     var gdriveIcon = renderButtonIcon('http://forms.saic.edu/files/Form-icons_Gmail/dgrive-icon.svg'); 
+     var gdriveIcon = renderButtonIcon('http://forms.saic.edu/files/Form-icons_Gmail/dgrive-icon.svg');
      var rhinoIcon = renderButtonIcon('http://forms.saic.edu/files/Form-icons_AIADO/rhino-logo.svg');
      var autocadIcon = renderButtonIcon('http://forms.saic.edu/files/Form-icons_AIADO/autocad-logo.svg');
      var revitIcon = renderButtonIcon('http://forms.saic.edu/files/Form-icons_AIADO/revit-logo.svg');
      var mayaIcon = renderButtonIcon('http://forms.saic.edu/files/Form-icons_AIADO/maya-logo.svg');
      var solidworksIcon = renderButtonIcon('http://forms.saic.edu/files/Form-icons_AIADO/solidworks-logo.svg');
      var keyshotIcon = renderButtonIcon('http://forms.saic.edu/files/Form-icons_AIADO/keyshot-logo.svg');
-  
+
      var commonIssues = [
       { issueName: 'Wifi',
-        icon: 'wifi', 
-        options: ['Network', 'WiFi', 'Wireless Connectivity'],
+        icon: 'wifi',
+        options: ['Network', 'Mobile', 'Wireless Connectivity'],
         issueNum: 1},
-      { issueName: 'Adobe Creative Cloud', 
-        logo: renderButtonIcon("http://forms.saic.edu/files/Form-Icons_Adobe/creative-cloud-cc-logo.svg"), 
+      { issueName: 'Adobe Creative Cloud',
+        logo: renderButtonIcon("http://forms.saic.edu/files/Form-Icons_Adobe/creative-cloud-cc-logo.svg"),
         options: ['Software & Online Services', 'Adobe Creative Cloud', 'Login Issues'],
         appIcons: [photoshopIcon, illustratorIcon, premierIcon, indesignIcon],
         issueNum: 2},
-       { issueName: 'Microsoft Office', 
-        logo: renderButtonIcon("http://forms.saic.edu/files/Form-Icons_Office/office-logo.svg"), 
+       { issueName: 'Microsoft Office',
+        logo: renderButtonIcon("http://forms.saic.edu/files/Form-Icons_Office/office-logo.svg"),
         options: ['Software & Online Services', 'Microsoft Office 365', 'Login Issues'],
         appIcons: [wordIcon, excelIcon, powerpointIcon],
         issueNum: 3},
@@ -505,17 +505,17 @@ function renderFontIcon(str) {
         icon: 'print',
         options: ['Printing', 'Canon Copier/HP Printer/Xerox Printer', 'Printer Driver'],
         issueNum: 4},
-       { issueName: 'UserName/Password', 
-        icon: 'user', 
+       { issueName: 'UserName/Password',
+        icon: 'user',
         options: ['Software & Online Services', 'Password/Single Sign-On', 'Password'],
         issueNum: 5},
-       { issueName: 'Email/Calendar', 
-        icon: '', 
+       { issueName: 'Email/Calendar',
+        icon: '',
         options: ['Software & Online Services', 'Google Apps & Gmail', 'Google Apps (Gmail, Drive, and Calendar)'],
         appIcons: [gmailIcon, gcalIcon, gdriveIcon],
-        issueNum: 6},     
-       { issueName: 'AIADO Software', 
-        logo: '', 
+        issueNum: 6},
+       { issueName: 'AIADO Software',
+        logo: '',
         options: ['Software & Online Services', 'AIADO Special Software', 'Package Install'],
         appIcons: [rhinoIcon, autocadIcon, revitIcon, mayaIcon, solidworksIcon, keyshotIcon],
         issueNum: 7},
@@ -526,45 +526,45 @@ function renderFontIcon(str) {
      ].sort(function(a, b){
        return a.issueNum - b.issueNum;
      });
-     
+
     $('#tfa_16-T').append('<div id= "instructions">Please select a button</div>');
     buildButtonPage(commonIssues,  $('#tfa_16-T'), 2);
-     
+
      $('.button-item').click(function() {
         var activeButton = $(this);
         var subType =   activeButton.data('opt-0');
-        var category =  activeButton.data('opt-1'); 
+        var category =  activeButton.data('opt-1');
         var issue =     activeButton.data('opt-2');
-       
+
         activeButton.css('opacity', '.5');
-    
-        if (subType === 'Other Category') {          
+
+        if (subType === 'Other Category') {
           var otherText = 'Please select the categories that best describe your issue';
           $('html, body').animate({scrollTop: $(document).height()}, 'slow');
           $('#tfa_10-L').before('<h2 id= "other_cat_T">' + otherText + '</h2>');
           showElement($('.oneField.field-container-D.labelsAbove *, .primaryAction , #other_cat_T'));
-          
-        } else {        
+
+        } else {
           setTimeout(function() {
              activeButton.find('.button-text').text('Submitting..');
            }, 500);
-           
+
           function selectOption(optionGroup, dataOpt) {
             optionGroup.filter(function() {
               return $(this).text() === dataOpt;
             }).prop('selected', true).trigger('change');
-            
+
             $('optgroup[label="'+ dataOpt +'"]').unwrap('span').show().removeAttr('disabled')
               .children().removeAttr('disabled');
           }
-               
+
           selectOption($("select#tfa_10 option"), subType);
           selectOption($("select#tfa_19 option"), category);
           selectOption($("select#tfa_71 option"), issue);
-          
+
           $('.primaryAction').click();
         }
-      });  
+      });
 });
 
 

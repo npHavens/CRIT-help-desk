@@ -3,14 +3,17 @@
 <script src="//use.fontawesome.com/43143907d2.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
 <style>
+#tfa_17-T {
+  opacity: 0;
+}
 
 #instructions {
   font-size: 24px;
   margin-top: 20px;
 }
 
-#button-row_1 {
-  margin-top: 30px;
+#button-row_0 {
+  margin-top: 25px !important;
 }
 
 #button-row_2 > .button-item {
@@ -26,7 +29,7 @@
 
 #button-row_4 > .button-item {
   padding-top: 50px;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
 }
 
 .button-item * .app-icon * {
@@ -410,8 +413,9 @@ function renderFontIcon(str) {
       }
 
       if ($('#wfPgIndex-1').hasClass('wfCurrentPage') && !$('#wfPgIndex-1').hasClass('confirmed')) {
+        // $('#tfa_17-T').hide();
         $('<div id="dialog"></div>').append(renderFontIcon("check-circle-o"))
-          .append('<h2>Your check-in is complete!</h2>')
+          .append('<h1>Your check-in is complete!</h1>')
           .append('<p>Please have a seat and someone will be with you shortly.</p>')
           .dialog({
             hide: { duration: 500 },
@@ -420,6 +424,7 @@ function renderFontIcon(str) {
 
          setTimeout(function(){
            $('#dialog').dialog('close');
+           $('#tfa_17-T').css('opacity', 1);
          }, 3000);
 
          $('#wfPgIndex-1').addClass('confirmed');
@@ -510,7 +515,7 @@ function renderFontIcon(str) {
        {issueName: 'Printing',
         icon: 'print',
         options: ['Software & Online Services', 'OSX', 'Printer Driver'],
-        issueNum: 4},
+        issueNum: 6},
        { issueName: 'Issue with macOS or Virus',
         icon: 'laptop',
         options: ['Software & Online Services', 'OSX', 'Issue with OSX'],
@@ -519,22 +524,28 @@ function renderFontIcon(str) {
         icon: '',
         options: ['Software & Online Services', 'Google Apps & Gmail', 'Password'],
         appIcons: [gmailIcon, gcalIcon, gdriveIcon],
-        issueNum: 6},
+        issueNum: 7},
        { issueName: 'AIADO Software',
         logo: '',
         options: ['Software & Online Services', 'AIADO Special Software', 'Direct Software Install'],
         appIcons: [rhinoIcon, autocadIcon, revitIcon, mayaIcon, solidworksIcon, keyshotIcon],
-        issueNum: 7},
+        issueNum: 4},
        {issueName: 'Other Issue',
         icon: '',
         options: ['Other Category', 'Other Sub Types', 'Other Issue'],
+        issueNum: 8},
+       {issueName: 'New Student Laptop Setup',
+        icon: 'laptop',
+        options: ['Software & Online Services', 'New Student Laptop Setup', 'Wifi, Adobe CC, and Office 365'],
         issueNum: 8}
      ].sort(function(a, b){
        return a.issueNum - b.issueNum;
      });
 
-    $('#tfa_16-T').append('<div id= "instructions">Please select a button</div>');
-    buildButtonPage(commonIssues,  $('#tfa_16-T'), 2);
+    var $newStudentButton = buildButtonRow(commonIssues.slice(8), 0);
+
+    $('#tfa_16-T').append('<div id= "instructions">Please select a button</div>').append($newStudentButton);
+    buildButtonPage(commonIssues.slice(0, 8),  $('#tfa_16-T'), 2);
 
      $('.button-item').click(function() {
         var activeButton = $(this);
